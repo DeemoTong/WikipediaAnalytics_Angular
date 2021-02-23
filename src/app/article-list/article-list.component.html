@@ -1,0 +1,45 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h2 class="mat-h1">Articles Total Revision Number List</h2>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<p *ngIf="articles.length <= 0" class="no-data">There is no articles data added yet!</p>
+
+<div *ngIf="articles.length > 0">
+  <!-- <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_revisions">
+        <th mat-header-cell *matHeaderCellDef> Total Revisions </th>
+        <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div> -->
+
+
+  <mat-accordion>
+    <ng-container *ngFor="let a of articles">
+      <mat-expansion-panel 
+      (opened)="beforePanelOpened(a._id)"
+      (closed)="beforePanelClosed()"
+      (afterCollapse)="afterPanelClosed($event)"
+      (afterExpand)="afterPanelOpened($event)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{a._id}}</mat-panel-title>
+          <mat-panel-description class="right-aligned">{{a.total}}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <article-author-list *ngIf="panelOpenState" [inputAuthors]="authors"></article-author-list>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</div>

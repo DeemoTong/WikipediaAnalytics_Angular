@@ -1,0 +1,53 @@
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink='/'>Wikipedia Analytics</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a routerLink='overall' class="dropdown-toggle" data-toggle="dropdown" >
+            Overall Analytics
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink='/overall/usertype-piechart'>User Type PieChart</a></li>
+            <li><a routerLink='/overall/distribution-barchart'>Distribution BarChart</a></li>
+            <li><a routerLink='/overall'>Top 2 Articles (highest revision)</a></li>
+            <li><a routerLink='/overall'>Top 2 Articles (lowest revision)</a></li>
+            <li><a routerLink='/overall'>Top 2 Articles (largest non-bot users)</a></li>
+            <li><a routerLink='/overall'>Top 2 Articles (smallest non-bot users)</a></li>
+            <li><a routerLink='/overall'>Top 2 Articles (longest history)</a></li>
+            <li><a routerLink='/overall'>Top 2 Articles (shortest history)</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+            Individual Article Analytics
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink='articles/info'>Articles Revision Number</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{auth.currentUser.firstName}}</a>
+          </li>
+        </ul>
+      </div>
+      <form id="searchForm"  class="navbar-form navbar-right"  >
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Sessions" >
+        </div>
+        <button class="btn btn-default" >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<ng-container>
+  <p *ngIf="inputAuthors.length <= 0" class="no-data">There is no author data related with this article!</p>
+
+<div *ngIf="inputAuthors.length > 0">
+    <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Author Name </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_revisions">
+        <th mat-header-cell *matHeaderCellDef> Total Revisions </th>
+        <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+</ng-container>
